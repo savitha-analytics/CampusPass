@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6fa;
+}
+
+/* Hero */
+
+.hero {
+    background: linear-gradient(135deg, #334960, #1c64ac);
+    color: white;
+    padding: 100px 20px;
+}
+
+/* Event Cards */
+
+.event-card {
+    border: none;
+    transition: 0.3s;
+}
+
+.event-card:hover {
+    transform: translateY(-6px);
+}
+
+/* Registration */
+
+.registration-section {
+    background-color: #eef1f5;
+}
+
+/* Ticket */
+
+.ticket {
+    max-width: 650px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.ticket-header {
+    background: #1c1f23;
+    color: white;
+    padding: 25px;
+}
+
+.ticket-header p {
+    margin-bottom: 0;
+}
+
+.ticket-body {
+    padding: 30px;
+}
+
+.ticket-body p {
+    margin-top: 5px;
+    color: #3c75ef;
+}
+
+#ticketId {
+    letter-spacing: 2px;
+}
+
+/* Print */
+
+@media print {
+
+    body * {
+        visibility: hidden;
+    }
+
+    #ticketSection,
+    #ticketSection * {
+        visibility: visible;
+    }
+
+    #ticketSection {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    #ticketSection button {
+        display: none;
+    }
+}
