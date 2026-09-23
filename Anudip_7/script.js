@@ -1,151 +1,437 @@
-// ===== SELECT EVENT =====
+/* ===== BASIC ===== */
 
-function selectEvent(eventName) {
+* {
+    box-sizing: border-box;
+}
 
-    document.getElementById("event").value =
-        eventName;
+html {
+    scroll-behavior: smooth;
+}
 
-    document.getElementById("register")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
+body {
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background-color: #f5f6fa;
+
+    color: #222;
 }
 
 
-// ===== GENERATE TICKET ID =====
+/* ===== NAVBAR ===== */
 
-function generateTicketId() {
+nav {
+    background-color: #222;
 
-    let number =
-        Math.floor(
-            1000 + Math.random() * 9000
-        );
+    padding: 18px 40px;
 
-    return "CP-2026-" + number;
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+}
+
+nav h2 {
+    color: white;
+
+    margin: 0;
+}
+
+nav div {
+    display: flex;
+
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #8fa2ff;
 }
 
 
-// ===== GET FORM =====
+/* ===== HOME ===== */
 
-let form =
-    document.getElementById(
-        "registrationForm"
+#home {
+    min-height: 90vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #667eea,
+        #764ba2
     );
 
+    color: white;
 
-// ===== FORM SUBMIT =====
+    padding: 40px;
+}
 
-form.addEventListener(
-    "submit",
-    function(event) {
+#home h1 {
+    font-size: 50px;
 
-        // Prevent page refresh
+    margin-bottom: 10px;
+}
 
-        event.preventDefault();
+#home p {
+    font-size: 20px;
+}
 
+.home-button {
+    margin-top: 20px;
 
-        // Get selected event
+    padding: 13px 25px;
 
-        let selectedEvent =
-            document.getElementById(
-                "event"
-            ).value;
+    background-color: white;
 
+    color: #667eea;
 
-        // Validation
+    text-decoration: none;
 
-        if (selectedEvent === "") {
+    border-radius: 6px;
 
-            alert(
-                "Please select an event."
-            );
+    font-weight: bold;
+}
 
-            return;
-        }
-
-
-        // Display Name
-
-        document.getElementById(
-            "ticketName"
-        ).innerText =
-            document.getElementById(
-                "name"
-            ).value;
+.home-button:hover {
+    transform: scale(1.05);
+}
 
 
-        // Display Register Number
+/* ===== EVENTS ===== */
 
-        document.getElementById(
-            "ticketRegNo"
-        ).innerText =
-            document.getElementById(
-                "regNo"
-            ).value;
+#events {
+    padding: 70px 10%;
 
+    text-align: center;
+}
 
-        // Display Department
+#events h2,
+#register h2 {
+    font-size: 32px;
+}
 
-        document.getElementById(
-            "ticketDepartment"
-        ).innerText =
-            document.getElementById(
-                "department"
-            ).value;
+.events {
+    display: flex;
 
+    justify-content: center;
 
-        // Display Year
+    gap: 25px;
 
-        document.getElementById(
-            "ticketYear"
-        ).innerText =
-            document.getElementById(
-                "year"
-            ).value;
+    flex-wrap: wrap;
+
+    margin-top: 35px;
+}
 
 
-        // Display Email
+/* ===== EVENT CARDS ===== */
 
-        document.getElementById(
-            "ticketEmail"
-        ).innerText =
-            document.getElementById(
-                "email"
-            ).value;
+.card {
+    width: 250px;
 
+    padding: 25px;
 
-        // Display Event
+    background-color: white;
 
-        document.getElementById(
-            "ticketEvent"
-        ).innerText =
-            selectedEvent;
+    border-radius: 15px;
 
+    box-shadow:
+        0 4px 10px rgba(0,0,0,0.15);
 
-        // Generate Ticket ID
+    cursor: pointer;
 
-        document.getElementById(
-            "ticketId"
-        ).innerText =
-            generateTicketId();
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
 
 
-        // Show Digital Pass
+/* Hover = card becomes bigger */
 
-        document.getElementById(
-            "ticketSection"
-        ).classList.remove(
-            "hidden"
-        );
+.card:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.25);
+}
 
 
-        // Scroll to Digital Pass
+/* Event colors */
 
-        document.getElementById(
-            "ticketSection"
-        ).scrollIntoView({
-            behavior: "smooth"
-        });
+.hackathon {
+    border-top: 7px solid #667eea;
+}
 
+.quiz {
+    border-top: 7px solid #ff9800;
+}
+
+.presentation {
+    border-top: 7px solid #4caf50;
+}
+
+
+/* Event heading colors */
+
+.hackathon h3 {
+    color: #667eea;
+}
+
+.quiz h3 {
+    color: #ff9800;
+}
+
+.presentation h3 {
+    color: #4caf50;
+}
+
+
+/* ===== CARD BUTTONS ===== */
+
+.card button {
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 5px;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.hackathon button {
+    background-color: #667eea;
+}
+
+.quiz button {
+    background-color: #ff9800;
+}
+
+.presentation button {
+    background-color: #4caf50;
+}
+
+
+/* ===== REGISTER ===== */
+
+#register {
+    padding: 70px 20px;
+
+    background-color: #eef0f5;
+}
+
+.section-title {
+    text-align: center;
+}
+
+.form-section {
+    max-width: 500px;
+
+    margin: auto;
+
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.15);
+}
+
+label {
+    display: block;
+
+    margin-top: 15px;
+
+    margin-bottom: 5px;
+
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+
+    padding: 11px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+
+    border-color: #667eea;
+}
+
+
+/* Submit button */
+
+.submit-btn {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 13px;
+
+    background-color: #667eea;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+.submit-btn:hover {
+    background-color: #4c5fd5;
+}
+
+
+/* ===== DIGITAL PASS ===== */
+
+.ticket {
+    max-width: 500px;
+
+    margin: 35px auto;
+
+    padding: 25px;
+
+    background-color: white;
+
+    border: 3px dashed #667eea;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.15);
+}
+
+.ticket h2 {
+    text-align: center;
+
+    color: #667eea;
+}
+
+.ticket p {
+    padding: 5px;
+
+    border-bottom: 1px solid #eee;
+}
+
+.ticket button {
+    width: 100%;
+
+    padding: 12px;
+
+    background-color: #222;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* ===== FOOTER ===== */
+
+footer {
+    background-color: #222;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+}
+
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 600px) {
+
+    nav {
+        flex-direction: column;
+
+        gap: 15px;
     }
-);
+
+    nav div {
+        gap: 15px;
+    }
+
+    #home h1 {
+        font-size: 35px;
+    }
+
+    .card {
+        width: 90%;
+    }
+}
+
+
+/* ===== PDF ===== */
+
+@media print {
+
+    body * {
+        visibility: hidden;
+    }
+
+    #ticketSection,
+    #ticketSection * {
+        visibility: visible;
+    }
+
+    #ticketSection {
+        position: absolute;
+
+        left: 0;
+
+        top: 0;
+
+        width: 100%;
+    }
+
+    #ticketSection button {
+        display: none;
+    }
+}
