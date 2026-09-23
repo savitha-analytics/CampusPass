@@ -1,84 +1,151 @@
-// Select an event
+// ===== SELECT EVENT =====
 
 function selectEvent(eventName) {
 
-    document.getElementById("event").value = eventName;
+    document.getElementById("event").value =
+        eventName;
 
-    document.getElementById("register").scrollIntoView({
-        behavior: "smooth"
-    });
+    document.getElementById("register")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
 }
 
 
-// Generate unique ticket ID
+// ===== GENERATE TICKET ID =====
 
 function generateTicketId() {
 
-    let number = Math.floor(1000 + Math.random() * 9000);
+    let number =
+        Math.floor(
+            1000 + Math.random() * 9000
+        );
 
     return "CP-2026-" + number;
 }
 
 
-// Registration
+// ===== GET FORM =====
 
-document.getElementById("registrationForm")
-    .addEventListener("submit", function(event) {
+let form =
+    document.getElementById(
+        "registrationForm"
+    );
+
+
+// ===== FORM SUBMIT =====
+
+form.addEventListener(
+    "submit",
+    function(event) {
+
+        // Prevent page refresh
 
         event.preventDefault();
 
-        let selectedEvent = document.getElementById("event").value;
-        let name = document.getElementById("name").value;
-        let regNo = document.getElementById("regNo").value;
-        let department = document.getElementById("department").value;
-        let year = document.getElementById("year").value;
-        let email = document.getElementById("email").value;
 
-        // Check event selection
+        // Get selected event
+
+        let selectedEvent =
+            document.getElementById(
+                "event"
+            ).value;
+
+
+        // Validation
 
         if (selectedEvent === "") {
 
-            alert("Please select an event first.");
+            alert(
+                "Please select an event."
+            );
 
             return;
         }
 
 
-        // Generate ticket
+        // Display Name
 
-        document.getElementById("ticketEvent").innerText =
+        document.getElementById(
+            "ticketName"
+        ).innerText =
+            document.getElementById(
+                "name"
+            ).value;
+
+
+        // Display Register Number
+
+        document.getElementById(
+            "ticketRegNo"
+        ).innerText =
+            document.getElementById(
+                "regNo"
+            ).value;
+
+
+        // Display Department
+
+        document.getElementById(
+            "ticketDepartment"
+        ).innerText =
+            document.getElementById(
+                "department"
+            ).value;
+
+
+        // Display Year
+
+        document.getElementById(
+            "ticketYear"
+        ).innerText =
+            document.getElementById(
+                "year"
+            ).value;
+
+
+        // Display Email
+
+        document.getElementById(
+            "ticketEmail"
+        ).innerText =
+            document.getElementById(
+                "email"
+            ).value;
+
+
+        // Display Event
+
+        document.getElementById(
+            "ticketEvent"
+        ).innerText =
             selectedEvent;
 
-        document.getElementById("ticketName").innerText =
-            name;
 
-        document.getElementById("ticketRegNo").innerText =
-            regNo;
+        // Generate Ticket ID
 
-        document.getElementById("ticketDepartment").innerText =
-            department;
-
-        document.getElementById("ticketYear").innerText =
-            year;
-
-        document.getElementById("ticketEmail").innerText =
-            email;
-
-        document.getElementById("ticketId").innerText =
+        document.getElementById(
+            "ticketId"
+        ).innerText =
             generateTicketId();
 
 
-        // Show ticket
+        // Show Digital Pass
 
-        document.getElementById("ticketSection")
-            .classList.remove("d-none");
+        document.getElementById(
+            "ticketSection"
+        ).classList.remove(
+            "hidden"
+        );
 
 
-        // Scroll to ticket
+        // Scroll to Digital Pass
 
-        document.getElementById("ticketSection")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
+        document.getElementById(
+            "ticketSection"
+        ).scrollIntoView({
+            behavior: "smooth"
+        });
 
-    });
+    }
+);
